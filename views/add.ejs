@@ -4,43 +4,46 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/css/main.css">
     <title>Mitt CV - Lägg till kurs</title>
 </head>
 
 <body>
-    <header id="main-header">
-        <div class="container">
-            <h1>Mitt CV</h1>
-            <nav>
-                <ul>
-                    <li><a href="/">Start</a></li>
-                    <li><a href="/add" class="current">Lägg till</a></li>
-                    <li><a href="/about">Om sidan</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
-    <main>
+    <div class="content">
+        <header id="main-header">
+            <div class="container">
+                <h1>Mitt CV</h1>
+                <nav>
+                    <ul>
+                        <li><a href="/">Start</a></li>
+                        <li><a href="/add" class="current">Lägg till</a></li>
+                        <li><a href="/about">Om sidan</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <h2>Mata in dina kurser i formuläret</h2>
+            <form id="kursForm" method="post" action="/">
+                <label for="code">Kurskod:</label>
+                <input type="text" id="code" name="code" placeholder="Skriv kurskoden">
 
-        <h2>Mata in dina kurser i formuläret</h2>
-        <form id="kursForm" method="post" action="/">
-            <label for="code">Kurskod:</label>
-            <input type="text" id="code" name="code" placeholder="Skriv kurskoden">
+                <label for="name">Kursnamn:</label>
+                <input type="text" id="name" name="name" placeholder="Skriv kursens namn">
 
-            <label for="name">Kursnamn:</label>
-            <input type="text" id="name" name="name" placeholder="Skriv kursens namn">
+                <label for="syllabus">Kursplan:</label>
+                <input type="url" id="syllabus" name="syllabus" placeholder="Ange URL till kursplanen">
 
-            <label for="syllabus">Kursplan:</label>
-            <input type="url" id="syllabus" name="syllabus" placeholder="Ange URL till kursplanen">
+                <label for="progression">Progression:</label>
+                <input type="text" id="progression" name="progression" placeholder="Ange A, B eller C">
 
-            <label for="progression">Progression:</label>
-            <input type="text" id="progression" name="progression" placeholder="Ange A, B eller C">
-
-            <button type="submit" class="btn">Lägg till</button>
-        </form>
-    </main>
-
+                <button type="submit" class="btn">Lägg till</button>
+            </form>
+        </main>
+    </div>
     <footer>
         <p>© joha2102@student.miun.se</p>
     </footer>
