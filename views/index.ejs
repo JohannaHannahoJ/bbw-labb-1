@@ -28,10 +28,23 @@
         </header>
         <main class="kursListaWrapper">
             <h2>Kurser jag läst</h2>
-            <div class="kursLista">
-                <p>Här hamnar inmatade kurser</p>
-            </div>
-            <a href="/add" class="btn">Ny kurs</a>
+            <% if(courseList.length> 0 ) { %>
+                <% courseList.forEach((course)=> { %>
+                    <article class="course">
+                        <h3>
+                            <%= course.code %>
+                        </h3>
+                        <p>
+                            <b>Kurs:</b> <%= course.name %><br>
+                            <b>Kursplan:</b> <%= course.syllabus %><br>
+                            <b>Progression:</b> <%= course.progression %><br>
+                        </p>
+                    </article>
+                    <% }); %>
+                        <% } else { %>
+                            <p>Det finns inga kurser i listan</p>
+                            <% } %>
+                                <a href="/add" class="btn">Ny kurs</a>
         </main>
     </div>
     <footer>

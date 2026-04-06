@@ -6,14 +6,18 @@ const port = 3100;
 // statiska filer ska hamna i public sökväg: "/"
 app.use(express.static("public"));
 // använder body parser som middleware skicka med ett objekt
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({ extended: true }));
 // väljer ejs för att läsa tempaltes
 app.set("view engine", "ejs");
 
+// array att lagra kurs i som ska skrivas ut till index
+const courseList = [];
 
 // Routing
 app.get("/", (req, res) => {
-    res.render("index");
+    res.render("index", {
+        courseList
+    });
 });
 
 app.get("/add", (req, res) => {
@@ -21,7 +25,20 @@ app.get("/add", (req, res) => {
 });
 
 app.post("/add", (req, res) => {
-    res.render("add");
+    // Läs in formulärdata
+    let newCourseCode = req.body.code;
+    let newCourseName = req.body.name;
+    let newSyllabus = req.body.syllabus;
+    let newProgression = req.body.progression;
+
+    courseList.push({
+        code: newCourseCode,
+        name: newCourseName,
+        syllabus: newSyllabus,
+        progression: newProgression
+    });
+
+    res.redirect("/");
 });
 
 app.get("/about", (req, res) => {
@@ -30,5 +47,5 @@ app.get("/about", (req, res) => {
 
 // Starta applikation
 app.listen(port, () => {
-    console.log("Server is started on port: " + port);   
+    console.log("Server is started on port: " + port);
 });

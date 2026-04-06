@@ -80,6 +80,10 @@ nav a.current {
     font-size: large;
 }
 
+.course {
+    margin-bottom: 1rem;
+}
+
 .btn,
 form label,
 form input {
