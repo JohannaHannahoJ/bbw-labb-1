@@ -21,7 +21,13 @@ app.get("/", (req, res) => {
 });
 
 app.get("/add", (req, res) => {
-    res.render("add");
+    res.render("add", {
+        errors: [],
+        code: "",
+        name: "",
+        syllabus: "",
+        progression: ""
+    });
 });
 
 app.post("/add", (req, res) => {
@@ -30,6 +36,31 @@ app.post("/add", (req, res) => {
     let newCourseName = req.body.name;
     let newSyllabus = req.body.syllabus;
     let newProgression = req.body.progression;
+
+    let errors = [];
+
+    if (newCourseCode === "") {
+        errors.push("Ange en kurskod");
+    }
+    if (newCourseName === "") {
+        errors.push("Ange kursens namn");
+    }
+    if (newSyllabus === "") {
+        errors.push("Ange url till kursplan");
+    }
+    if (newProgression === "") {
+        errors.push("Välj kursnivå");
+    }
+
+    if (errors.length > 0) {
+        return res.render("add", {
+            errors,
+            code: newCourseCode,
+            name: newCourseName,
+            syllabus: newSyllabus,
+            progression: newProgression
+        });
+    }
 
     courseList.push({
         code: newCourseCode,

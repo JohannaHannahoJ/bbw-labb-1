@@ -86,15 +86,16 @@ nav a.current {
 
 .btn,
 form label,
-form input {
+form input,
+form select {
     display: block;
     width: 100%;
     margin-bottom: 1rem;
-
 }
 
 .btn,
-form input {
+form input,
+form select {
     border: 2px dotted var(--piff);
     border-radius: 5px;
     padding: 0.4rem;
@@ -111,23 +112,15 @@ form input {
     margin-top: 2rem;
 }
 
-
+.course,
 form {
     border: 2px dotted var(--piff);
     border-radius: 10px;
     padding: 1rem 2rem;
 }
 
-table {
-    width: 100%;
-    margin: 1rem 0;
-}
-
-th,
-td {
-    border: 1px solid var(--piff);
-    padding: 0.5rem;
-    text-align: left;
+.error {
+  color: red;
 }
 
 footer {

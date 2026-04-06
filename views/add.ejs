@@ -27,18 +27,36 @@
         </header>
         <main>
             <h2>Mata in dina kurser i formuläret</h2>
-            <form id="kursForm" method="post">
+
+            <% if(locals.errors.length> 0) { %>
+            <ul class="error">
+                <% errors.forEach((error)=> { %>
+                    <li>
+                        <%= error %>
+                    </li>
+
+                    <% }); %>
+            </ul>
+
+            <% } %>
+
+            <form id="kursForm" method="post" action="/add">
                 <label for="code">Kurskod:</label>
-                <input type="text" id="code" name="code" placeholder="Skriv kurskoden">
+                <input type="text" id="code" name="code" placeholder="Skriv kurskoden" value="<%= code || '' %>">
 
                 <label for="name">Kursnamn:</label>
-                <input type="text" id="name" name="name" placeholder="Skriv kursens namn">
+                <input type="text" id="name" name="name" placeholder="Skriv kursens namn" value="<%= name || '' %>">
 
                 <label for="syllabus">Kursplan:</label>
-                <input type="url" id="syllabus" name="syllabus" placeholder="Ange URL till kursplanen">
+                <input type="url" id="syllabus" name="syllabus" placeholder="Ange URL till kursplanen" value="<%= syllabus || '' %>">
 
                 <label for="progression">Progression:</label>
-                <input type="text" id="progression" name="progression" placeholder="Ange A, B eller C">
+                    <select id="progression" name="progression">
+                        <option value="">Välj progression</option>
+                        <option value="A" <%= progression === "A" ? "selected" : "" %>>A</option>
+                        <option value="B" <%= progression === "B" ? "selected" : "" %>>B</option>
+                        <option value="C" <%= progression === "C" ? "selected" : "" %>>C</option>
+                    </select>
 
                 <button type="submit" class="btn">Lägg till</button>
             </form>
