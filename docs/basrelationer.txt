@@ -1,0 +1,2 @@
+
+Course (Course_id (pk), Code, Name, Syllabus, Progression, Course_added)
