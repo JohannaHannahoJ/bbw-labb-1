@@ -1,5 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser"); // Möjlighet att läsa in formulärdata
+
+const db = require("./install");
+
 const app = express();
 const port = 3100;
 
@@ -10,16 +13,23 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // väljer ejs för att läsa tempaltes
 app.set("view engine", "ejs");
 
-// array att lagra kurs i som ska skrivas ut till index
-const courseList = [];
+
 
 // Routing
+// -startsida
 app.get("/", (req, res) => {
-    res.render("index", {
-        courseList
+    db.all("SELECT * FROM courses", (err, rows) => {
+        if (err) {
+            console.log(err);
+        }
+
+        res.render("index", {
+            courseList: rows
+        });
     });
 });
 
+// lägg till kurs-sida
 app.get("/add", (req, res) => {
     res.render("add", {
         errors: [],
@@ -30,6 +40,7 @@ app.get("/add", (req, res) => {
     });
 });
 
+// POST fr form
 app.post("/add", (req, res) => {
     // Läs in formulärdata
     let newCourseCode = req.body.code;
@@ -62,16 +73,14 @@ app.post("/add", (req, res) => {
         });
     }
 
-    courseList.push({
-        code: newCourseCode,
-        name: newCourseName,
-        syllabus: newSyllabus,
-        progression: newProgression
-    });
+    const stmt = db.prepare("INSERT INTO courses (code, name, syllabus, progression) VALUES (?, ?, ?, ?)");
+    stmt.run(newCourseCode, newCourseName, newSyllabus, newProgression);
+    stmt.finalize();
 
     res.redirect("/");
 });
 
+// om-sidan
 app.get("/about", (req, res) => {
     res.render("about");
 });
