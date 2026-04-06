@@ -33,6 +33,7 @@ body {
 main {
     max-width: 70ch;
     margin: 0 auto;
+    padding: 2rem;
 }
 
 
@@ -47,6 +48,11 @@ main {
 
 #main-header h1 {
     margin-bottom: 15px;
+    font-size: 60px;
+}
+
+h2 {
+    margin-bottom: 1rem;
 }
 
 nav ul {
