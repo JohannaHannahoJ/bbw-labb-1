@@ -39,6 +39,9 @@
                             <b>Kursplan:</b> <%= course.syllabus %><br>
                             <b>Progression:</b> <%= course.progression %><br>
                         </p>
+                        <p>
+                            <a href="/delete/<%= course.course_id %>" class="btn">Ta bort</a>
+                        </p>
                     </article>
                     <% }); %>
                         <% } else { %>

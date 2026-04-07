@@ -80,6 +80,16 @@ app.post("/add", (req, res) => {
     res.redirect("/");
 });
 
+// Radera kurser
+app.get('/delete/:id', (req, res) => {
+  let id = req.params.id;
+    db.run('DELETE FROM courses WHERE course_id = ?', id, (err) => {
+    if (err) console.log(err.message);
+
+    res.redirect('/');
+  });
+});
+
 // om-sidan
 app.get("/about", (req, res) => {
     res.render("about");
