@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Mitt CV - Lägg till kurs</title>
+</head>
+
+<body>
+    <div class="content">
+        <header id="main-header">
+            <div class="container">
+                <h1>Mitt CV</h1>
+                <nav>
+                    <ul>
+                        <li><a href="/">Start</a></li>
+                        <li><a href="/add" class="current">Lägg till</a></li>
+                        <li><a href="/about">Om sidan</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <h2>Mata in dina kurser i formuläret</h2>
+
+            <% if(locals.errors.length> 0) { %>
+            <ul class="error">
+                <% errors.forEach((error)=> { %>
+                    <li>
+                        <%= error %>
+                    </li>
+
+                    <% }); %>
+            </ul>
+
+            <% } %>
+
+            <form id="kursForm" method="post" action="/add">
+                <label for="code">Kurskod:</label>
+                <input type="text" id="code" name="code" placeholder="Skriv kurskoden" value="<%= code || '' %>">
+
+                <label for="name">Kursnamn:</label>
+                <input type="text" id="name" name="name" placeholder="Skriv kursens namn" value="<%= name || '' %>">
+
+                <label for="syllabus">Kursplan:</label>
+                <input type="url" id="syllabus" name="syllabus" placeholder="Ange URL till kursplanen" value="<%= syllabus || '' %>">
+
+                <label for="progression">Progression:</label>
+                    <select id="progression" name="progression">
+                        <option value="">Välj progression</option>
+                        <option value="A" <%= progression === "A" ? "selected" : "" %>>A</option>
+                        <option value="B" <%= progression === "B" ? "selected" : "" %>>B</option>
+                        <option value="C" <%= progression === "C" ? "selected" : "" %>>C</option>
+                    </select>
+
+                <button type="submit" class="btn">Lägg till</button>
+            </form>
+        </main>
+    </div>
+    <footer>
+        <p>© joha2102@student.miun.se</p>
+    </footer>
+
+
+</body>
+
+</html>

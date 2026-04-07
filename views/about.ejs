@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Delius&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/css/main.css">
+    <title>Mitt CV - Om sidan</title>
+</head>
+
+<body>
+    <div class="content">
+        <header id="main-header">
+            <div class="container">
+                <h1>Mitt CV</h1>
+                <nav>
+                    <ul>
+                        <li><a href="/">Start</a></li>
+                        <li><a href="/add">Lägg till</a></li>
+                        <li><a href="/about" class="current">Om sidan</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <main>
+            <h2>Om sidan</h2>
+            <p>
+                Det här är en uppgift i kursen Backend-baserad webbutveckling.
+                Uppgiften går ut på att skapa ett databasbaserat CV som låter
+                användaren lagra och visa kurser som har lästs. Jag har använt
+                Node.js och Express för att skapa servern och ansluta till en
+                relationsdatabas för att lagra kursinformation.
+            </p><br>
+
+            <h3>Databas</h3>
+            <p>
+                För denna applikation används SQLite som databasserver.
+                Databasen innehåller en tabell, courses, där varje kurs
+                lagras med fält för kurskod, kursnamn, kursplan (länk),
+                progression och tidpunkt då kursen lades till.
+            </p><br>
+
+            <h3>Slutsatser</h3>
+            <p>
+                Genom att genomföra denna uppgift har jag fått träna på att
+                skapa en server med Node.js och Express. Jag har även tränat på att
+                ansluta till och manipulera en SQLite-databas med SQL-kommandon samt
+                använda en view engine (EJS).
+            </p><br>
+            <p>
+                Det har varit en bra övning, som har gått att genomföra tack vare det material
+                som fanns på kurswebben. Funktionaliteter som jag skulle velat lägga till/förändra är att 
+                ha en knapp för "ta bort" istället för länk, samt någon form av bekräftelse när en kurs är 
+                raderad. Tyvärr blev dessa detaljer en aning övermäktiga, men jag hoppas 
+                behärska dessa metoder vid kursens slut.
+            </p><br>
+        </main>
+    </div>
+    <footer>
+        <p>© joha2102@student.miun.se</p>
+    </footer>
+
+
+</body>
+
+</html>
